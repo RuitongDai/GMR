@@ -9,12 +9,12 @@
         "Hips": 0.9,
         "Spine2": 0.9,
 
-        "LeftUpLeg": 0.9,
-        "RightUpLeg": 0.9,
-        "LeftLeg": 0.9,
-        "RightLeg": 0.9,
-        "LeftFootMod": 0.9,
-        "RightFootMod": 0.9,
+        "LeftUpLeg": 0.95,
+        "RightUpLeg": 0.95,
+        "LeftLeg": 0.95,
+        "RightLeg": 0.95,
+        "LeftFootMod": 0.95,
+        "RightFootMod": 0.95,
 
         "LeftArm": 0.75,
         "RightArm": 0.75,

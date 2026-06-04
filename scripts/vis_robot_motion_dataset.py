@@ -1,3 +1,5 @@
+#上一个动作"["，下一个动作"]"，暂停空格键。
+
 from general_motion_retargeting import RobotMotionViewer, load_robot_motion
 import argparse
 import os
