@@ -36,8 +36,8 @@ if __name__ == "__main__":
     
     parser.add_argument(
         "--robot",
-        choices=["unitree_g1", "unitree_g1_with_hands", "booster_t1", "stanford_toddy", "fourier_n1", "engineai_pm01", "pal_talos"],
-        default="unitree_g1",
+        choices=["unitree_g1", "unitree_g1_with_hands", "booster_t1", "stanford_toddy", "fourier_n1", "engineai_pm01", "pal_talos","x3"],
+        default="x3",
     )
     
     
@@ -145,7 +145,7 @@ if __name__ == "__main__":
             dof_pos=qpos[7:],
             human_motion_data=retargeter.scaled_human_data,
             rate_limit=args.rate_limit,
-            follow_camera=True,
+            follow_camera=False,
             # human_pos_offset=np.array([0.0, 0.0, 0.0])
         )
 

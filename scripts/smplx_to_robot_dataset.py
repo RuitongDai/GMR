@@ -23,7 +23,7 @@ import psutil
 import tracemalloc
 
 
-def check_memory(threshold_gb=30):  # adjust based on your available memory
+def check_memory(threshold_gb=4):  # adjust based on your available memory
     mem = psutil.virtual_memory()
     used_memory_gb = (mem.total - mem.available) / (1024 ** 3)
     available_memory_gb = mem.available / (1024 ** 3)
@@ -170,7 +170,7 @@ def process_file(smplx_file_path, tgt_file_path, tgt_robot, SMPLX_FOLDER, tgt_fo
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--robot", default="unitree_g1")
+    parser.add_argument("--robot", default="x3")
     parser.add_argument("--src_folder", type=str,
                         required=True,
                         )
@@ -179,7 +179,7 @@ def main():
                         )
     
     parser.add_argument("--override", default=False, action="store_true")
-    parser.add_argument("--num_cpus", default=4, type=int)
+    parser.add_argument("--num_cpus", default=1, type=int)
     args = parser.parse_args()
     
     # print the total number of cpus and gpus

@@ -32,7 +32,7 @@ if __name__ == "__main__":
     
     parser.add_argument(
         "--robot",
-        default="unitree_g1",
+        default="x3",
     )
     
     parser.add_argument(
