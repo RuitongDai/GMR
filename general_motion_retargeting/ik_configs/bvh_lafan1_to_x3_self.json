@@ -6,22 +6,22 @@
     "use_ik_match_table1": false,
     "use_ik_match_table2": true,
     "human_scale_table": {
-        "Hips": 0.9,
+        "Hips": 0.82,
         "Spine2": 0.9,
 
-        "LeftUpLeg": 1.0,
-        "RightUpLeg": 1.0,
-        "LeftLeg": 1.0,
-        "RightLeg": 1.0,
-        "LeftFoot": 1.0,
-        "RightFoot": 1.0,
+        "LeftUpLeg": 0.9,
+        "RightUpLeg": 0.9,
+        "LeftLeg": 0.9,
+        "RightLeg": 0.9,
+        "LeftFoot": 0.88,
+        "RightFoot": 0.88,
 
-        "LeftArm": 0.75,
-        "RightArm": 0.75,
-        "LeftForeArm": 0.75,
-        "RightForeArm": 0.75,
-        "LeftHand": 0.75,
-        "RightHand": 0.75
+        "LeftArm": 0.9,
+        "RightArm": 0.9,
+        "LeftForeArm": 0.8,
+        "RightForeArm": 0.8,
+        "LeftHand": 0.73,
+        "RightHand": 0.73
     },
 
     "ik_match_table1": {
