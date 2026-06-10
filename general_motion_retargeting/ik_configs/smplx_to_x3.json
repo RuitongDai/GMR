@@ -9,12 +9,12 @@
         "pelvis": 0.9,
         "spine3": 0.9,
 
-        "left_hip": 0.87,
-        "right_hip": 0.87,
-        "left_knee": 0.87,
-        "right_knee": 0.87,
-        "left_foot": 0.87,
-        "right_foot": 0.87,
+        "left_hip": 0.91,
+        "right_hip": 0.91,
+        "left_knee": 0.91,
+        "right_knee": 0.91,
+        "left_foot": 0.91,
+        "right_foot": 0.91,
 
         "left_shoulder": 0.8,
         "right_shoulder": 0.8,
