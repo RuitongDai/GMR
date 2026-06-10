@@ -4,6 +4,7 @@ import time
 from general_motion_retargeting import GeneralMotionRetargeting as GMR
 from general_motion_retargeting import RobotMotionViewer
 from general_motion_retargeting.utils.lafan1 import load_bvh_file
+from general_motion_retargeting.utils.noitom_bvh import load_noitom_bvh_file
 from rich import print
 from tqdm import tqdm
 import os
@@ -23,7 +24,7 @@ if __name__ == "__main__":
     
     parser.add_argument(
         "--format",
-        choices=["lafan1", "nokov"],
+        choices=["lafan1", "nokov", "noitom"],
         default="lafan1",
     )
     
@@ -81,7 +82,10 @@ if __name__ == "__main__":
 
     
     # Load SMPLX trajectory
-    lafan1_data_frames, actual_human_height = load_bvh_file(args.bvh_file, format=args.format)
+    if args.format == "noitom":
+        lafan1_data_frames, actual_human_height = load_noitom_bvh_file(args.bvh_file)
+    else:
+        lafan1_data_frames, actual_human_height = load_bvh_file(args.bvh_file, format=args.format)
     
     
     # Initialize the retargeting system
