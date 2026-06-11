@@ -16,8 +16,18 @@ def load_noitom_bvh_file(bvh_file):
     # 2. 计算出所有关节的全局位置 (Global Position) 和全局四元数 (Global Quat)
     global_data = utils.quat_fk(data.quats, data.pos, data.parents)
 
-    # 3. 坐标系转换矩阵：将 Y-up 转换为 Z-up，以适配绝大多数双足机器人 (如 G1, X3)
-    rotation_matrix = np.array([[1, 0, 0], [0, 0, -1], [0, 1, 0]])
+    # # 3. 坐标系转换矩阵：将 Y-up 转换为 Z-up，以适配绝大多数双足机器人 (如 G1, X3)
+    # rotation_matrix = np.array([[1, 0, 0], [0, 0, -1], [0, 1, 0]])
+    # rotation_quat = R.from_matrix(rotation_matrix).as_quat(scalar_first=True)  # 格式为 [w, x, y, z]
+    # 3. 坐标系转换矩阵：先将 Y-up 转换为 Z-up
+    base_rotation_matrix = np.array([[1, 0, 0], [0, 0, -1], [0, 1, 0]])
+
+    # 全局偏航角 (Yaw) 修正
+    # 机器人向左侧身了，我们就绕 Z 轴转 90 度把它掰正
+    yaw_correction = R.from_euler('z', 90, degrees=True).as_matrix()
+
+    # 组合矩阵：先转换向上轴，再纠正正前方面向
+    rotation_matrix = yaw_correction @ base_rotation_matrix
     rotation_quat = R.from_matrix(rotation_matrix).as_quat(scalar_first=True)  # 格式为 [w, x, y, z]
 
     frames = []
