@@ -33,6 +33,9 @@ MAPPING_CONFIGS = {
 
 
 def dynamic_import(func_path):
+    """
+    根据字符串路径动态导入 Python 模块中的函数。
+    """
     module_path, func_name = func_path.rsplit('.', 1)
     import importlib
     module = importlib.import_module(module_path)
@@ -40,7 +43,10 @@ def dynamic_import(func_path):
 
 
 def calculate_offsets(bvh_path, xml_path, mapping, data_format):
-    # 1. 加载数据
+    """
+        核心计算引擎：根据人类第0帧 (A/T-Pose) 与机器人零位姿态，自动计算坐标系旋转偏移差值。
+    """
+    # 1. 加载数据并读取人类0帧绝对姿态
     loader_func = dynamic_import(LOADER_MAP[data_format])
     frames, _ = loader_func(bvh_path)
     frame0 = frames[0]
@@ -48,26 +54,31 @@ def calculate_offsets(bvh_path, xml_path, mapping, data_format):
     # 2. 加载机器人
     model = mujoco.MjModel.from_xml_path(xml_path)
     data = mujoco.MjData(model)
-    # 调用正向运动学计算出每个连杆在三维空间中的绝对坐标轴
+    # 调用正向运动学计算出零位每个连杆在三维空间中的绝对坐标轴
     mujoco.mj_kinematics(model, data)
 
     # 3. 计算结果
     result_dict = {}
     for robot_link, human_bone in mapping.items():
+        #查找机器人连杆ID
         body_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, robot_link)
         if body_id == -1 or human_bone not in frame0:
             continue
 
+        #提取机器人该连杆的绝对旋转矩阵 (3x3)，并转换为 scipy 的 Rotation 对象
         R_robot = R.from_matrix(data.xmat[body_id].reshape(3, 3))
 
-        quat_wxyz = frame0[human_bone][1]
-        R_human = R.from_quat([quat_wxyz[1], quat_wxyz[2], quat_wxyz[3], quat_wxyz[0]])
+        #提取人类对应骨骼在第 0 帧的绝对旋转四元数
+        quat_wxyz = frame0[human_bone][1]   #GMR 传过来的是 [w, x, y, z]
+        R_human = R.from_quat([quat_wxyz[1], quat_wxyz[2], quat_wxyz[3], quat_wxyz[0]]) #重新排列为 [x, y, z, w]
 
+        #【核心数学方程】求解旋转偏差R_human * R_offset = R_robot
         R_offset = R_human.inv() * R_robot
+        #将算出的偏差矩阵转回四元数，此时 scipy 输出的是 [x, y, z, w]
         offset_xyzw = R_offset.as_quat()
+        #再次转换回 GMR 和 MuJoCo 标准的 [w, x, y, z]
         offset_wxyz = np.round([offset_xyzw[3], offset_xyzw[0], offset_xyzw[1], offset_xyzw[2]], 4).tolist()
-
-        weight = 100 if "ankle" in robot_link else 10
+        #组装
         result_dict[robot_link] = [human_bone, offset_wxyz]
 
     return result_dict
