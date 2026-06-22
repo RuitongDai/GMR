@@ -4,12 +4,25 @@ import os
 import time
 
 import numpy as np
+import mujoco as mj
 
 from general_motion_retargeting import GeneralMotionRetargeting as GMR
 from general_motion_retargeting import RobotMotionViewer
 from general_motion_retargeting.utils.smpl import load_smplx_file, get_smplx_data_offline_fast
 
 from rich import print
+
+class PlaybackState:
+    def __init__(self):
+        self.is_paused = False
+
+playback_state = PlaybackState()
+
+def keyboard_callback(keycode):
+    if keycode == ord(' '):  # spacebar
+        playback_state.is_paused = not playback_state.is_paused
+        state = "PAUSED" if playback_state.is_paused else "PLAYING"
+        print(f"[yellow]Playback {state}[/yellow]")
 
 if __name__ == "__main__":
     
@@ -91,7 +104,8 @@ if __name__ == "__main__":
                                             motion_fps=aligned_fps,
                                             transparent_robot=0,
                                             record_video=args.record_video,
-                                            video_path=f"videos/{args.robot}_{args.smplx_file.split('/')[-1].split('.')[0]}.mp4",)
+                                            video_path=f"videos/{args.robot}_{args.smplx_file.split('/')[-1].split('.')[0]}.mp4",
+                                            keyboard_callback=keyboard_callback,)
     
 
     curr_frame = 0
@@ -108,21 +122,24 @@ if __name__ == "__main__":
     
     # Start the viewer
     i = 0
+    total_frames = len(smplx_data_frames)
 
     while True:
-        if args.loop:
-            i = (i + 1) % len(smplx_data_frames)
-        else:
-            i += 1
-            if i >= len(smplx_data_frames):
-                break
+        if not playback_state.is_paused:
+            if args.loop:
+                i = (i + 1) % total_frames
+            else:
+                i += 1
+                if i >= total_frames:
+                    break
         
         # FPS measurement
         fps_counter += 1
         current_time = time.time()
         if current_time - fps_start_time >= fps_display_interval:
             actual_fps = fps_counter / (current_time - fps_start_time)
-            print(f"Actual rendering FPS: {actual_fps:.2f}")
+            status = "PAUSED" if playback_state.is_paused else "PLAYING"
+            print(f"[cyan]{status}[/cyan] | FPS: {actual_fps:.2f} | Frame: {i+1}/{total_frames}")
             fps_counter = 0
             fps_start_time = current_time
         

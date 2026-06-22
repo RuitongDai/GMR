@@ -13,8 +13,8 @@
         "right_hip": 0.9,
         "left_knee": 0.9,
         "right_knee": 0.9,
-        "left_foot": 0.96,
-        "right_foot": 0.96,
+        "left_foot": 0.98,
+        "right_foot": 0.98,
 
         "left_shoulder": 0.7,
         "right_shoulder": 0.7,
@@ -303,7 +303,7 @@
         "left_ankle_roll_link": [
             "left_foot",
             100,
-            100,
+            50,
             [
                 0.0,
                 0.0,
@@ -346,7 +346,7 @@
         "right_ankle_roll_link": [
             "right_foot",
             100,
-            100,
+            50,
             [
                 0.0,
                 0.0,
