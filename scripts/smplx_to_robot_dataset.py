@@ -170,7 +170,7 @@ def process_file(smplx_file_path, tgt_file_path, tgt_robot, SMPLX_FOLDER, tgt_fo
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--robot", default="x3")
+    parser.add_argument("--robot", default="e1")
     parser.add_argument("--src_folder", type=str,
                         required=True,
                         )
