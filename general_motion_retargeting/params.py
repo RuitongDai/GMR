@@ -60,6 +60,7 @@ IK_CONFIG_DICT = {
         "pal_talos": IK_CONFIG_ROOT / "bvh_to_talos.json",
         "x3": IK_CONFIG_ROOT / "bvh_lafan1_to_x3_self.json",
         # "x3": IK_CONFIG_ROOT / "bvh_lafan1_to_x3.json",
+        "e1": IK_CONFIG_ROOT / "bvh_lafan1_to_e1_self.json",
     },
     "bvh_nokov":{
         "unitree_g1": IK_CONFIG_ROOT / "bvh_nokov_to_g1.json",

@@ -10,6 +10,18 @@ from tqdm import tqdm
 import os
 import numpy as np
 
+class PlaybackState:
+    def __init__(self):
+        self.is_paused = False
+
+playback_state = PlaybackState()
+
+def keyboard_callback(keycode):
+    if keycode == ord(' '):  # spacebar
+        playback_state.is_paused = not playback_state.is_paused
+        state = "PAUSED" if playback_state.is_paused else "PLAYING"
+        print(f"[yellow]Playback {state}[/yellow]")
+
 if __name__ == "__main__":
     
     HERE = pathlib.Path(__file__).parent
@@ -37,8 +49,8 @@ if __name__ == "__main__":
     
     parser.add_argument(
         "--robot",
-        choices=["unitree_g1", "unitree_g1_with_hands", "booster_t1", "stanford_toddy", "fourier_n1", "engineai_pm01", "pal_talos","x3"],
-        default="x3",
+        choices=["unitree_g1", "unitree_g1_with_hands", "booster_t1", "stanford_toddy", "fourier_n1", "engineai_pm01", "pal_talos","x3","e1"],
+        default="e1",
     )
     
     
@@ -102,6 +114,7 @@ if __name__ == "__main__":
                                             transparent_robot=0,
                                             record_video=args.record_video,
                                             video_path=args.video_path,
+                                            keyboard_callback=keyboard_callback,
                                             # video_width=2080,
                                             # video_height=1170
                                             )
@@ -118,11 +131,23 @@ if __name__ == "__main__":
     
     # Start the viewer
     i = 0
-    
-
+    qpos = None
+    human_motion_data = None
 
     while True:
-        
+        if playback_state.is_paused:
+            # 暂停时只渲染，不更新帧、进度或数据
+            if qpos is not None:
+                robot_motion_viewer.step(
+                    root_pos=qpos[:3],
+                    root_rot=qpos[3:7],
+                    dof_pos=qpos[7:],
+                    human_motion_data=human_motion_data,
+                    rate_limit=args.rate_limit,
+                    follow_camera=False,
+                )
+            continue
+
         # FPS measurement
         fps_counter += 1
         current_time = time.time()
@@ -131,7 +156,7 @@ if __name__ == "__main__":
             print(f"Actual rendering FPS: {actual_fps:.2f}")
             fps_counter = 0
             fps_start_time = current_time
-            
+
         # Update progress bar
         pbar.update(1)
 
@@ -140,14 +165,14 @@ if __name__ == "__main__":
 
         # retarget
         qpos = retargeter.retarget(smplx_data)
-        
+        human_motion_data = retargeter.scaled_human_data
 
         # visualize
         robot_motion_viewer.step(
             root_pos=qpos[:3],
             root_rot=qpos[3:7],
             dof_pos=qpos[7:],
-            human_motion_data=retargeter.scaled_human_data,
+            human_motion_data=human_motion_data,
             rate_limit=args.rate_limit,
             follow_camera=False,
             # human_pos_offset=np.array([0.0, 0.0, 0.0])
@@ -159,8 +184,8 @@ if __name__ == "__main__":
             i += 1
             if i >= len(lafan1_data_frames):
                 break
-   
-        
+
+
         if args.save_path is not None:
             qpos_list.append(qpos)
     
