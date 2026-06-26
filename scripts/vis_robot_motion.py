@@ -111,11 +111,12 @@ if __name__ == "__main__":
         if state.need_save:
             new_root_pos = motion_root_pos.copy()
             new_root_pos[:, 2] += state.z_offset
+            new_root_rot_xyzw = motion_root_rot[:, [1, 2, 3, 0]]
 
             save_data = {
                 "fps": motion_fps,
                 "root_pos": new_root_pos,
-                "root_rot": motion_root_rot,
+                "root_rot": new_root_rot_xyzw,
                 "dof_pos": motion_dof_pos,
                 "local_body_pos": motion_local_body_pos,
                 "link_body_list": motion_link_body_list,
@@ -136,7 +137,6 @@ if __name__ == "__main__":
         current_pos[2] += state.z_offset
 
         # 尝试绕过 RobotMotionViewer，直接把数据塞给底层的原生 MuJoCo 引擎
-        # 这将彻底摧毁外层包装器的相机追踪逻辑，实现真·自由视角
         bypassed = False
         if hasattr(env, 'data') and hasattr(env, 'model') and hasattr(env, 'viewer'):
             try:
