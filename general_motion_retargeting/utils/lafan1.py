@@ -14,9 +14,11 @@ def load_bvh_file(bvh_file, format="lafan1"):
         ...
     }
     """
+    #将bvh里的欧拉角转换成局部四元数(wxyz)
     data = read_bvh(bvh_file)
+    #将局部四元数转换成全局四元数
     global_data = utils.quat_fk(data.quats, data.pos, data.parents)
-
+    #坐标系变换Y-up->Z-up
     rotation_matrix = np.array([[1, 0, 0], [0, 0, -1], [0, 1, 0]])
     rotation_quat = R.from_matrix(rotation_matrix).as_quat(scalar_first=True)
 
@@ -24,7 +26,9 @@ def load_bvh_file(bvh_file, format="lafan1"):
     for frame in range(data.pos.shape[0]):
         result = {}
         for i, bone in enumerate(data.bones):
+            #朝向变换
             orientation = utils.quat_mul(rotation_quat, global_data[0][frame, i])
+            #位置变换
             position = global_data[1][frame, i] @ rotation_matrix.T / 100  # cm to m
             result[bone] = [position, orientation]
             

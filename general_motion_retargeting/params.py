@@ -58,19 +58,26 @@ IK_CONFIG_DICT = {
         "stanford_toddy": IK_CONFIG_ROOT / "bvh_lafan1_to_toddy.json",
         "engineai_pm01": IK_CONFIG_ROOT / "bvh_lafan1_to_pm01.json",
         "pal_talos": IK_CONFIG_ROOT / "bvh_to_talos.json",
-        "x3": IK_CONFIG_ROOT / "bvh_lafan1_to_x3_self.json",
-        # "x3": IK_CONFIG_ROOT / "bvh_lafan1_to_x3.json",
+        # "x3": IK_CONFIG_ROOT / "bvh_lafan1_to_x3_self.json",
+        "x3": IK_CONFIG_ROOT / "bvh_lafan1_to_x3.json",
         "e1": IK_CONFIG_ROOT / "bvh_lafan1_to_e1_self.json",
     },
+
+    "bvh_guangxue": {
+        "e1": IK_CONFIG_ROOT / "bvh_guangxue_to_e1.json",
+    },
+
+    "bvh_noitom": {
+        "e1": IK_CONFIG_ROOT / "bvh_noitom_to_e1.json",
+        "x3": IK_CONFIG_ROOT / "bvh_noitom_to_x3.json",
+    },
+
     "bvh_nokov":{
         "unitree_g1": IK_CONFIG_ROOT / "bvh_nokov_to_g1.json",
     },
     "bvh_xsens":{
         "unitree_g1": IK_CONFIG_ROOT / "bvh_xsens_to_g1.json",
         "unitree_h1_2": IK_CONFIG_ROOT / "bvh_xsens_to_h1_2.json",
-    },
-    "bvh_noitom":{
-        "x3": IK_CONFIG_ROOT / "bvh_noitom_to_x3.json",
     },
     "fbx":{
         "unitree_g1": IK_CONFIG_ROOT / "fbx_to_g1.json",
