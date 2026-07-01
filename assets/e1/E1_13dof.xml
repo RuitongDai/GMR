@@ -43,7 +43,7 @@
       <site name="imu_in_pelvis" size="0.01" pos="0 0 -0.045"/>
       <body name="left_hip_pitch_link" pos="0 0.0575 0">
         <inertial pos="0.00088737 0.0559209 -0.0170011" quat="0.525183 0.830564 -0.161076 0.0916522" mass="1.01" diaginertia="0.00103812 0.00100921 0.000721394"/>
-        <joint name="left_hip_pitch_joint" pos="0 0 0" axis="0 1 0" actuatorfrcrange="-120 120"/>
+        <joint name="left_hip_pitch_joint" pos="0 0 0" axis="0 1 0" range="-2.5307 2.8798" actuatorfrcrange="-120 120"/>
         <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.29412 0.29412 0.29412 1" mesh="left_hip_pitch_link"/>
         <body name="left_hip_roll_link" pos="0 0.0625 -0.02">
           <inertial pos="-0.00054795 0.00928439 -0.070913" quat="0.72708 0.0123078 0.0971982 0.679526" mass="0.981" diaginertia="0.00140293 0.0012261 0.000954215"/>
@@ -74,7 +74,7 @@
       </body>
       <body name="right_hip_pitch_link" pos="0 -0.0575 0">
         <inertial pos="0.00088737 -0.0559194 -0.0170037" quat="0.830604 0.524849 -0.0921638 0.16167" mass="1.005" diaginertia="0.00103816 0.00100913 0.000721421"/>
-        <joint name="right_hip_pitch_joint" pos="0 0 0" axis="0 1 0" actuatorfrcrange="-120 120"/>
+        <joint name="right_hip_pitch_joint" pos="0 0 0" axis="0 1 0" range="-2.5307 2.8798" actuatorfrcrange="-120 120"/>
         <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.29412 0.29412 0.29412 1" mesh="right_hip_pitch_link"/>
         <body name="right_hip_roll_link" pos="0 -0.0625 -0.02">
           <inertial pos="-0.00054795 -0.00928439 -0.070913" quat="0.679526 0.0971982 0.0123078 0.72708" mass="0.981" diaginertia="0.00140293 0.0012261 0.000954215"/>
