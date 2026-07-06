@@ -6,14 +6,14 @@
     "use_ik_match_table1": true,
     "use_ik_match_table2": false,
     "human_scale_table": {
-        "Hips": 0.70,
-        "Chest": 0.6,
-        "LeftUpLeg": 0.65,
-        "RightUpLeg": 0.65,
-        "LeftLeg": 0.65,
-        "RightLeg": 0.65,
-        "LeftFootMod": 0.65,
-        "RightFootMod": 0.65
+        "Hips": 0.86,
+        "Chest": 0.9,
+        "LeftUpLeg": 0.9,
+        "RightUpLeg": 0.9,
+        "LeftLeg": 0.85,
+        "RightLeg": 0.85,
+        "LeftFootMod": 0.9,
+        "RightFootMod": 0.9
     },
     "ik_match_table1": {
         "pelvis": [
@@ -70,7 +70,7 @@
             10,
             [
                 0.0,
-                0.05,
+                0.02,
                 0.0
             ],
             [
@@ -118,7 +118,7 @@
             10,
             [
                 0.0,
-                -0.05,
+                -0.02,
                 0.0
             ],
             [

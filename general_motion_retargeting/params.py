@@ -26,6 +26,7 @@ ROBOT_XML_DICT = {
     "x3": ASSET_ROOT / "x3" / "Moya01_V2.xml",
     "e1": ASSET_ROOT / "e1" / "E1_13dof.xml",
     "x3_f1": ASSET_ROOT / "x3_f1" / "x3_f1_14dof.xml",
+    "x3_f2": ASSET_ROOT / "x3_f2" / "x3f2_14dof.xml",
 }
 
 IK_CONFIG_DICT = {
@@ -66,6 +67,7 @@ IK_CONFIG_DICT = {
     "bvh_guangxue": {
         "e1": IK_CONFIG_ROOT / "bvh_guangxue_to_e1.json",
         "x3_f1":IK_CONFIG_ROOT / "bvh_guangxue_to_x3_f1.json",
+        "x3_f2":IK_CONFIG_ROOT / "bvh_guangxue_to_x3_f2.json",
     },
 
     "bvh_noitom": {
@@ -119,6 +121,7 @@ ROBOT_BASE_DICT = {
     "x3": "pelvis",
     "e1": "pelvis",
     "x3_f1": "pelvis",
+    "x3_f2": "pelvis",
 }
 
 VIEWER_CAM_DISTANCE_DICT = {
@@ -143,4 +146,5 @@ VIEWER_CAM_DISTANCE_DICT = {
     "x3": 2.0,
     "e1": 2.0,
     "x3_f1": 2.0,
+    "x3_f2": 2.0,
 }
