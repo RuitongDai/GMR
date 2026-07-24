@@ -25,7 +25,7 @@ if __name__ == "__main__":
         frame_rate = motion_data["fps"]            
         motion = np.zeros((dof_pos.shape[0], dof_pos.shape[1] + 7), dtype=np.float32)
         motion[:, :3] = motion_data["root_pos"]
-        motion[:, 3:7] = motion_data["root_rot"]
+        motion[:, 3:7] = motion_data["root_rot"]  #xyzw
         motion[:, 7:] = dof_pos
         
         if frame_rate > 30:

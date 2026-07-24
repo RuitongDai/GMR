@@ -32,7 +32,7 @@ if __name__ == "__main__":
     
     parser.add_argument(
         "--robot",
-        default="x3",
+        default="x3_f2",
     )
     
     parser.add_argument(

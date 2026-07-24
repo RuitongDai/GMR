@@ -26,7 +26,7 @@ ROBOT_XML_DICT = {
     "x3": ASSET_ROOT / "x3" / "Moya01_V2.xml",
     "e1": ASSET_ROOT / "e1" / "E1_13dof.xml",
     "x3_f1": ASSET_ROOT / "x3_f1" / "x3_f1_14dof.xml",
-    "x3_f2": ASSET_ROOT / "x3_f2" / "x3f2_14dof.xml",
+    "x3_f2": ASSET_ROOT / "f2" / "scene_f1_1.xml",
 }
 
 IK_CONFIG_DICT = {
@@ -51,6 +51,7 @@ IK_CONFIG_DICT = {
         "fourier_gr3": IK_CONFIG_ROOT / "smplx_to_gr3.json",
         "x3": IK_CONFIG_ROOT / "smplx_to_x3.json",
         "e1": IK_CONFIG_ROOT / "smplx_to_e1.json",
+        "x3_f2": IK_CONFIG_ROOT / "smplx_to_x3_f2.json",
     },
     "bvh_lafan1":{
         "unitree_g1": IK_CONFIG_ROOT / "bvh_lafan1_to_g1.json",
@@ -62,6 +63,7 @@ IK_CONFIG_DICT = {
         "pal_talos": IK_CONFIG_ROOT / "bvh_to_talos.json",
         "x3": IK_CONFIG_ROOT / "bvh_lafan1_to_x3_self.json",
         # "x3": IK_CONFIG_ROOT / "bvh_lafan1_to_x3.json",
+        "x3_f2": IK_CONFIG_ROOT / "bvh_lafan1_to_x3_f2.json",
     },
 
     "bvh_guangxue": {
@@ -73,6 +75,7 @@ IK_CONFIG_DICT = {
     "bvh_noitom": {
         "e1": IK_CONFIG_ROOT / "bvh_noitom_to_e1.json",
         "x3": IK_CONFIG_ROOT / "bvh_noitom_to_x3.json",
+        "x3_f2":IK_CONFIG_ROOT / "bvh_guangxue_to_x3_f2.json",
     },
 
     "bvh_nokov":{

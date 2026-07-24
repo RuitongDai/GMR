@@ -51,8 +51,8 @@
     <mesh name="Technology head_link" file="Technology head_link.STL" />
   </asset>
   <worldbody>
-<!--    <geom name="floor" size="0 0 0.01" type="plane" material="groundplane" contype="1" conaffinity="1" priority="1" friction="0.6" condim="3"/>-->
-<!--    <light diffuse=".5 .5 .5" pos="-3 -3 5" dir="3 3 -5" castshadow="true"/>-->
+    <geom name="floor" size="0 0 0.01" type="plane" material="groundplane" contype="1" conaffinity="1" priority="1" friction="0.6" condim="3"/>
+    <light diffuse=".5 .5 .5" pos="-3 -3 5" dir="3 3 -5" castshadow="true"/>
 
     <body name="pelvis" pos="0 0 0.792">
       <inertial pos="0 0 -0.047022" mass="0.9" diaginertia="0.0007894 0.0007894 0.00061446" />
