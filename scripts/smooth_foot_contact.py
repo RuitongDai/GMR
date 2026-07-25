@@ -145,7 +145,7 @@ if __name__ == "__main__":
     parser.add_argument("--pkl", type=str, required=True, help="输入的 .pkl 动作文件路径")
     parser.add_argument("--xml", type=str, required=True, help="机器人的 XML 模型路径")
     parser.add_argument("--foot_geoms", type=str, nargs='+', default=["l_foot_collision", "r_foot_collision"])
-    parser.add_argument("--sigma", type=float, default=3.0, help="高斯滤波系数 (推荐 2.0 ~ 5.0)")
+    parser.add_argument("--sigma", type=float, default=5.0, help="高斯滤波系数 (推荐 2.0 ~ 5.0)")
     parser.add_argument("--preserve_jumps", action="store_true", help="保留明显的腾空跳跃期不被强制拉回地面")
     parser.add_argument("--no_plot", action="store_true", help="禁用图表生成")
 

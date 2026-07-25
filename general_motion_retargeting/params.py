@@ -25,6 +25,7 @@ ROBOT_XML_DICT = {
     "fourier_gr3": ASSET_ROOT / "fourier_gr3v2_1_1" / "mjcf" / "gr3v2_1_1_dummy_hand.xml",
     "x3": ASSET_ROOT / "x3" / "Moya01_V2.xml",
     "e1": ASSET_ROOT / "e1" / "E1_13dof.xml",
+    "e1_25dof":ASSET_ROOT / "e1" / "E1_25dof.xml",
     "x3_f1": ASSET_ROOT / "x3_f1" / "x3_f1_14dof.xml",
     "x3_f2": ASSET_ROOT / "f2" / "scene_f1_1.xml",
 }
@@ -78,6 +79,11 @@ IK_CONFIG_DICT = {
         "x3_f2":IK_CONFIG_ROOT / "bvh_guangxue_to_x3_f2.json",
     },
 
+    "bvh_new": {
+        "x3_f2":IK_CONFIG_ROOT / "bvh_new_to_x3_f2.json",
+        "e1_25dof":IK_CONFIG_ROOT / "bvh_new_to_e1_25dof.json",
+    },
+
     "bvh_nokov":{
         "unitree_g1": IK_CONFIG_ROOT / "bvh_nokov_to_g1.json",
     },
@@ -125,6 +131,7 @@ ROBOT_BASE_DICT = {
     "e1": "pelvis",
     "x3_f1": "pelvis",
     "x3_f2": "pelvis",
+    "e1_25dof": "pelvis",
 }
 
 VIEWER_CAM_DISTANCE_DICT = {
@@ -150,4 +157,5 @@ VIEWER_CAM_DISTANCE_DICT = {
     "e1": 2.0,
     "x3_f1": 2.0,
     "x3_f2": 2.0,
+    "e1_25dof": 2.0
 }
