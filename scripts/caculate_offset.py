@@ -136,10 +136,10 @@ if __name__ == "__main__":
 
     # 填入你需要下放变成 A-pose/T-pose 的机器人的关节名和角度
     my_custom_pose = {
-        "left_shoulder_roll_joint": 1.57,
-        "right_shoulder_roll_joint": -1.57,
-        "left_elbow_joint": 1.57,
-        "right_elbow_joint": 1.57,
+        "left_elbow_joint": 1.35,
+        "right_elbow_joint": 1.35,
+        "left_shoulder_roll_joint": 0.15,
+        "right_shoulder_roll_joint": -0.15,
     }
 
     calibrator = AutoOffsetCalibrator(
