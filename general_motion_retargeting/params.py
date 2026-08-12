@@ -24,10 +24,10 @@ ROBOT_XML_DICT = {
     "pal_talos": ASSET_ROOT / "pal_talos" / "talos.xml",
     "fourier_gr3": ASSET_ROOT / "fourier_gr3v2_1_1" / "mjcf" / "gr3v2_1_1_dummy_hand.xml",
     "x3": ASSET_ROOT / "x3" / "Moya01_V2.xml",
-    "e1": ASSET_ROOT / "e1" / "E1_13dof.xml",
+    "e1_no_hand": ASSET_ROOT / "E1_V2" / "E1_no_hand.xml",
     "e1_25dof":ASSET_ROOT / "e1" / "E1_25dof.xml",
     "x3_f1": ASSET_ROOT / "x3_f1" / "x3_f1_14dof.xml",
-    "x3_f2": ASSET_ROOT / "f2" / "scene_f1_1.xml",
+    "x3_f2": ASSET_ROOT / "f2" / "scene_f1_1_noupper.xml",
     "f3": ASSET_ROOT / "f3" / "scene_f3.xml",
 }
 
@@ -52,7 +52,6 @@ IK_CONFIG_DICT = {
         "tienkung": IK_CONFIG_ROOT / "smplx_to_tienkung.json",
         "fourier_gr3": IK_CONFIG_ROOT / "smplx_to_gr3.json",
         "x3": IK_CONFIG_ROOT / "smplx_to_x3.json",
-        "e1": IK_CONFIG_ROOT / "smplx_to_e1.json",
         "x3_f2": IK_CONFIG_ROOT / "smplx_to_x3_f2.json",
     },
     "bvh_lafan1":{
@@ -69,14 +68,14 @@ IK_CONFIG_DICT = {
     },
 
     "bvh_guangxue": {
-        "e1": IK_CONFIG_ROOT / "bvh_guangxue_to_e1.json",
+        "e1_no_hand": IK_CONFIG_ROOT / "bvh_guangxue_to_e1_no_hand.json",
         "x3_f1":IK_CONFIG_ROOT / "bvh_guangxue_to_x3_f1.json",
-        "x3_f2":IK_CONFIG_ROOT / "bvh_guangxue_to_x3_f2.json",
+        "x3_f2":IK_CONFIG_ROOT / "bvh_guangxue_to_x3_f2_noupper.json",
         "f3":IK_CONFIG_ROOT / "bvh_guangxue_to_f3.json",
     },
 
     "bvh_noitom": {
-        "e1": IK_CONFIG_ROOT / "bvh_noitom_to_e1.json",
+        "e1_no_hand": IK_CONFIG_ROOT / "bvh_noitom_to_e1_no_hand.json",
         "x3": IK_CONFIG_ROOT / "bvh_noitom_to_x3.json",
         "x3_f2":IK_CONFIG_ROOT / "bvh_guangxue_to_x3_f2.json",
     },
@@ -130,7 +129,7 @@ ROBOT_BASE_DICT = {
     "pal_talos": "base_link",
     "fourier_gr3": "base_link",
     "x3": "pelvis",
-    "e1": "pelvis",
+    "e1_no_hand": "pelvis",
     "x3_f1": "pelvis",
     "x3_f2": "pelvis",
     "e1_25dof": "pelvis",
@@ -157,7 +156,7 @@ VIEWER_CAM_DISTANCE_DICT = {
     "pal_talos": 3.0,
     "fourier_gr3": 2.0,
     "x3": 2.0,
-    "e1": 2.0,
+    "e1_no_hand": 2.0,
     "x3_f1": 2.0,
     "x3_f2": 2.0,
     "e1_25dof": 2.0,

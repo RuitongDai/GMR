@@ -6,7 +6,7 @@
     "use_ik_match_table1": true,
     "use_ik_match_table2": false,
     "human_scale_table": {
-        "Hips": 0.95,
+        "Hips": 0.96,
         "Chest": 0.95,
         "LeftUpLeg": 1,
         "RightUpLeg": 1,
