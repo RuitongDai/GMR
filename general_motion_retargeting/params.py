@@ -28,6 +28,7 @@ ROBOT_XML_DICT = {
     "e1_25dof":ASSET_ROOT / "e1" / "E1_25dof.xml",
     "x3_f1": ASSET_ROOT / "x3_f1" / "x3_f1_14dof.xml",
     "x3_f2": ASSET_ROOT / "f2" / "scene_f1_1_noupper.xml",
+    "x3_f2_full": ASSET_ROOT / "f2" / "scene_f1_1.xml",
     "f3": ASSET_ROOT / "f3" / "scene_f3.xml",
 }
 
@@ -92,6 +93,9 @@ IK_CONFIG_DICT = {
         "unitree_g1": IK_CONFIG_ROOT / "bvh_xsens_to_g1.json",
         "unitree_h1_2": IK_CONFIG_ROOT / "bvh_xsens_to_h1_2.json",
     },
+    "bvh_sfu":{
+        "x3_f2_full": IK_CONFIG_ROOT / "bvh_sfu_to_x3_f2_full.json",
+    },
     "fbx":{
         "unitree_g1": IK_CONFIG_ROOT / "fbx_to_g1.json",
         "unitree_g1_with_hands": IK_CONFIG_ROOT / "fbx_to_g1.json",
@@ -134,6 +138,7 @@ ROBOT_BASE_DICT = {
     "x3_f2": "pelvis",
     "e1_25dof": "pelvis",
     "f3": "pelvis",
+    "x3_f2_full": "pelvis",
 }
 
 VIEWER_CAM_DISTANCE_DICT = {
@@ -161,4 +166,5 @@ VIEWER_CAM_DISTANCE_DICT = {
     "x3_f2": 2.0,
     "e1_25dof": 2.0,
     "f3": 2.0,
+    "x3_f2_full": 2.0,
 }

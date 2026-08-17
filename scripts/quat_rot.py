@@ -52,10 +52,7 @@ if __name__ == "__main__":
     # if len(q_in) != 4:
     #     raise ValueError("Need 4 numbers: w x y z")
     q_in = list([
-        -0.5059,
-        0.5178,
-        0.4929,
-        0.4827
+        0.7071068, 0, -0.7071068, 0
             ])
     # q_in = list([0.7071,    0.0,     0.0, 0.7071])
     # q_in = list([1,  0,  0,  0])

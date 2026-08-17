@@ -6,6 +6,7 @@ from scipy.spatial.transform import Rotation as R
 from general_motion_retargeting.utils.guangxue import load_guangxue_bvh_file
 from general_motion_retargeting.utils.noitom import load_noitom_bvh_file
 from general_motion_retargeting.utils.new import load_new_bvh_file
+from general_motion_retargeting.utils.sfu import load_sfu_bvh_file
 
 class AutoOffsetCalibrator:
     def __init__(self, bvh_path: str, xml_path: str, json_path: str, bvh_format: str, custom_zero_pose: dict = None):
@@ -22,7 +23,8 @@ class AutoOffsetCalibrator:
         self.bvh_loaders = {
             "guangxue": load_guangxue_bvh_file,
             "noitom": load_noitom_bvh_file,
-            "new": load_new_bvh_file
+            "new": load_new_bvh_file,
+            "sfu": load_sfu_bvh_file,
         }
 
     def _load_json(self):
@@ -129,17 +131,17 @@ if __name__ == "__main__":
     parser.add_argument("--xml", type=str, required=True, help="机器人的 MuJoCo XML 路径")
     parser.add_argument("--config", type=str, required=True, help="对应的 JSON 配置表")
     # 把 format 变成必需的或者带 choices 校验的参数，增强鲁棒性
-    parser.add_argument("--format", type=str, required=True, choices=["guangxue", "noitom", "new"], help="BVH的数据来源格式")
+    parser.add_argument("--format", type=str, required=True, choices=["guangxue", "noitom", "new","sfu"], help="BVH的数据来源格式")
     parser.add_argument("--output", type=str, default=None, help="另存为路径(可选)")
 
     args = parser.parse_args()
 
     # 填入你需要下放变成 A-pose/T-pose 的机器人的关节名和角度
     my_custom_pose = {
-        "left_elbow_joint": 1.35,
-        "right_elbow_joint": 1.35,
-        "left_shoulder_roll_joint": 0.15,
-        "right_shoulder_roll_joint": -0.15,
+        "left_elbow_joint": 1.57,
+        "right_elbow_joint": 1.57,
+        "left_shoulder_roll_joint": 0.25,
+        "right_shoulder_roll_joint": -0.25,
     }
 
     calibrator = AutoOffsetCalibrator(

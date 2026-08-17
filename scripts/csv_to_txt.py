@@ -585,7 +585,7 @@ if __name__ == "__main__":
     parser.add_argument("--robot",  required=True, help="机器人名称 (例如 x3_zq)")
     parser.add_argument("--output", required=True, help="输出 TXT 路径 (或使用 --dir 时的输出目录)")
     parser.add_argument("--bvh",    default=None, help="(CSV 模式) 从 BVH Frame Time 读取输入帧率")
-    parser.add_argument("--input_fps", type=float, default=None,
+    parser.add_argument("--input_fps", type=float, default=100,
                         help="(CSV 模式) 输入帧率。覆盖 --frame_duration/--bvh。PKL 使用 pickle 帧率除非设置。")
     parser.add_argument("--frame_duration", type=float, default=None,
                         help="(CSV 模式) 手动输入帧时长（秒）")
