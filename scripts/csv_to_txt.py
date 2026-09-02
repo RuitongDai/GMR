@@ -167,6 +167,7 @@ FOOT_BODY_MAP = {
     "unitree_g1":   ("left_ankle_roll_link", "right_ankle_roll_link"),
     "x3_f1_14dof":  ("left_ankle_roll_link", "right_ankle_roll_link"),
     "x3_f2":        ("left_ankle_roll_link", "right_ankle_roll_link"),
+    "x3_f2_waiguan": ("left_ankle_roll_link", "right_ankle_roll_link"),
 }
 
 HAND_BODY_MAP = {
@@ -175,6 +176,7 @@ HAND_BODY_MAP = {
     "unitree_g1":   ("left_wrist_yaw_link", "right_wrist_yaw_link"),
     "x3_f1_14dof":  (None, None),   # 无手臂自由度
     "x3_f2":        (None, None),
+    "x3_f2_waiguan":(None, None),
 }
 
 ELBOW_BODY_MAP = {
@@ -183,6 +185,7 @@ ELBOW_BODY_MAP = {
     "unitree_g1":   ("left_elbow_link", "right_elbow_link"),
     "x3_f1_14dof":  (None, None),   # 无手臂自由度
     "x3_f2":        (None, None),
+    "x3_f2_waiguan":(None, None),
 }
 
 KNEE_BODY_MAP = {
@@ -191,6 +194,7 @@ KNEE_BODY_MAP = {
     "unitree_g1":   ("left_knee_link", "right_knee_link"),
     "x3_f1_14dof":  ("left_knee_link", "right_knee_link"),
     "x3_f2":        ("left_knee_link", "right_knee_link"),
+    "x3_f2_waiguan":("left_knee_link", "right_knee_link"),
 }
 
 # ---------------------------------------------------------------------------
@@ -589,7 +593,7 @@ if __name__ == "__main__":
                         help="(CSV 模式) 输入帧率。覆盖 --frame_duration/--bvh。PKL 使用 pickle 帧率除非设置。")
     parser.add_argument("--frame_duration", type=float, default=None,
                         help="(CSV 模式) 手动输入帧时长（秒）")
-    parser.add_argument("--output_fps", type=float, default=50.0,
+    parser.add_argument("--output_fps", type=float, default=100.0,
                         help="重采样目标帧率 (与 csv_to_npz 匹配，默认 50)")
     parser.add_argument("--foot_left",  default=None, help="覆盖左脚身体名称")
     parser.add_argument("--foot_right", default=None, help="覆盖右脚身体名称")

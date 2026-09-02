@@ -30,7 +30,7 @@ if __name__ == "__main__":
         
         if frame_rate > 30:
             # downsample to 30 fps
-            downsample_factor = frame_rate / 120
+            downsample_factor = frame_rate / 100
             indices = np.arange(0, motion.shape[0], downsample_factor).astype(int)
             old_length = motion.shape[0]
             motion = motion[indices]

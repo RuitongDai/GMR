@@ -66,7 +66,7 @@ def print_status(state):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="E1 动作数据播放与剪辑工具")
     parser.add_argument("--pkl_file", type=str, default="/home/dai/datasets_retargeted/f3/walk_xyz_smoothed.pkl", help="要播放的 .pkl 文件路径")
-    parser.add_argument("--xml_file", type=str, default="assets/f2/scene_f1_1.xml", help="机器人的 XML 模型路径")
+    parser.add_argument("--xml_file", type=str, default="assets/F2_ZZ1_waiguan/x3_f2_14dof.xml", help="机器人的 XML 模型路径")
     args = parser.parse_args()
 
     # 1. 加载模型
